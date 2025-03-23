@@ -1,7 +1,19 @@
 default_language_version:
     python: python3
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit hooks
+  autofix_prs: true
+  autoupdate_branch: "pre-commit-autoupdate"
+  autoupdate_commit_msg: "[pre-commit.ci] pre-commit autoupdate"
+  autoupdate_schedule: monthly
+  skip: [no-commit-to-branch]
+  submodules: false
+
 repos:
   - repo: https://github.com/kynan/nbstripout
     rev: 0.3.9
     hooks:
       - id: nbstripout
+      - id: check-added-large-files
+      - id: check-merge-conflict
