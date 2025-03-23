@@ -1,0 +1,6 @@
+name: euxfel-mar25
+channels:
+  - conda-forge
+dependencies:
+  - python=3
+  - pip
