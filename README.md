@@ -28,6 +28,10 @@ One time setup:
 8. copy any ipynbs you might want to run to folder where you want to work
 8. Download the folder with the data from the EuXFEL cluster and copy it to a folder named 'input_data'.  This folder must reside in the same folder as the ipynb.
 
+Downloading the data from Maxwell cluster:
+
+1. log in to Maxwell cluster using your credentials and one time authentication factor. See following link for instructions (fixme)
+
 To run the code:
 1. log in to your computer and start a terminal
 2. activate the conda environment `conda activate euxfel-mar25`
