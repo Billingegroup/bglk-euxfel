@@ -32,8 +32,9 @@ Downloading the data from Maxwell cluster:
 
 1. log in to [Jupyter Hub](https://max-jhub.desy.de) on the Maxwell cluster using your DESY credentials and one time authentication factor. See this [link](https://it.desy.de/services/mfa/external_people/index_eng.html) for instructions
 2. choose suitable partition on Maxwell from the upper drop-down menu and spawn your job. You will automatically have a folder named GPFS
-3. navigate to gpfs/exfel/exp/\<beamline>/\<cycle>/\<proposal_number>/usr/\<code_name>, for example gpfs/exfel/exp/FXE/202501/p008015/usr/data_for_morph
-4. fake edit
+3. navigate to gpfs/exfel/exp/\<beamline>/\<cycle>/\<proposal_number>/usr/\<code_name>, for example gpfs/exfel/exp/FXE/202501/p008015/usr/data_for_morph. Here you will find a ipynb file \<file_name.ipynb> and a folder \<folder_name>, for example get_data_for_morphing.ipynb and folder name save_raw_integrated_Data. The folder is where all the azimuthal integrated 2D detector images, geometry and mask corrected, will be saved for each run. This includes the raw scattering intensities for each delay scan, sorted between laser on and laser off, scattering vector q, and delay scan motor positions
+4. open the ipynb
+5. edit any parameters in the second cell, such as the proposal number, the max_run which (the prograis the 
 
 To run the code:
 1. log in to your computer and start a terminal
