@@ -25,8 +25,22 @@ One time setup:
 7. if you will be uploading any code edits and making push requests to the repository install and do some more things
    `conda install pre-commit` then type
    `pre-commit install`
+8. Make the `eurfel-mar25` environment to be available as a kernel in jupyter.  Type `python -m ipykernel install --user --name=euxfel-mar25`
 
-Downloading the data from Maxwell cluster:
+Testing your installation by running the example in this repo
+
+1. look for the `example` directory in the `doc` directory.  You should see a folder called `input_data`
+2. make a copy of the `figure_of_merit_assessment.ipynb` and paste it into the `example` directory.
+3. in your terminal move to that same directory, e.g., `cd doc/example`
+4. with your `euxfel-mar25` environment activated type `jupyter notebook &`
+5. Jupyter should open in your browser
+6. navigate to the `figure_of_merit_assessment.ipynb` and double-click on it to open it
+7. make sure that the kernel selected is `euxfel-mar25` by selecting it in the dropdown menu
+8. adjust the user-defined entries the second cell appropriately and run the notebook.  You can do this by running each cell separately, but better is 
+9. it should run and give plots that look nice without crashing
+10. after doing this, you can safely delete that ipynb
+
+Downloading the data from Maxwell cluster to do a full analysis:
 
 1. log in to [Jupyter Hub](https://max-jhub.desy.de) on the Maxwell cluster using your DESY credentials and one time authentication factor. See this [link](https://it.desy.de/services/mfa/external_people/index_eng.html) for instructions
 2. choose suitable partition on Maxwell from the upper drop-down menu and spawn your job. You will automatically have a folder named GPFS
