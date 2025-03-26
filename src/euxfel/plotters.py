@@ -1,8 +1,8 @@
-import matplotlib.cm as cm
-from matplotlib.widgets import Slider, Button, RadioButtons
-import matplotlib.pyplot as plt
 import matplotlib
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.widgets import Button, RadioButtons, Slider
 
 
 def assessment_plotter(delays, args):

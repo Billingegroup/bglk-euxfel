@@ -1,8 +1,9 @@
-import diffpy.morph.morph_api as morph
-import xarray as xr
 from pathlib import Path
-import numpy as np
+
+import diffpy.morph.morph_api as morph
 import matplotlib
+import numpy as np
+import xarray as xr
 
 from euxfel.functions import build_delay_dict, find_nearest, set_limits
 from euxfel.parsers import get_args, preprocessing_args

@@ -192,8 +192,7 @@ def _load_key_value_pair(s):
 
 
 def preprocessing_args(args):
-    """
-    Perform preprocessing on the provided argparse Namespace
+    """Perform preprocessing on the provided argparse Namespace.
 
     Parameters
     ----------

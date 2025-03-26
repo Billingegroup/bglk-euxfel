@@ -25,18 +25,18 @@ One time setup:
 7. if you will be uploading any code edits and making push requests to the repository install and do some more things
    `conda install pre-commit` then type
    `pre-commit install`
-8. Make the `eurfel-mar25` environment to be available as a kernel in jupyter.  Type `python -m ipykernel install --user --name=euxfel-mar25`
+8. Make the `eurfel-mar25` environment to be available as a kernel in jupyter. Type `python -m ipykernel install --user --name=euxfel-mar25`
 
 Testing your installation by running the example in this repo
 
-1. look for the `example` directory in the `doc` directory.  You should see a folder called `input_data`
+1. look for the `example` directory in the `doc` directory. You should see a folder called `input_data`
 2. make a copy of the `figure_of_merit_assessment.ipynb` and paste it into the `example` directory.
 3. in your terminal move to that same directory, e.g., `cd doc/example`
 4. with your `euxfel-mar25` environment activated type `jupyter notebook &`
 5. Jupyter should open in your browser
 6. navigate to the `figure_of_merit_assessment.ipynb` and double-click on it to open it
 7. make sure that the kernel selected is `euxfel-mar25` by selecting it in the dropdown menu
-8. adjust the user-defined entries the second cell appropriately and run the notebook.  You can do this by running each cell separately, but better is 
+8. adjust the user-defined entries the second cell appropriately and run the notebook. You can do this by running each cell separately, but better is
 9. it should run and give plots that look nice without crashing
 10. after doing this, you can safely delete that ipynb
 
@@ -47,13 +47,15 @@ Downloading the data from Maxwell cluster to do a full analysis:
 3. navigate to `gpfs/exfel/exp/\<beamline>/\<cycle>/\<proposal_number>/usr/\<code_name>`, for example `gpfs/exfel/exp/FXE/202501/p008015/usr/data_for_morph`. Here you will find a ipynb file \<file_name.ipynb> and a folder \<folder_name>, for example `get_data_for_morphing.ipynb` and folder name 'save_raw_integrated_Data'. The folder is where all the azimuthal integrated 2D detector images, geometry and mask corrected, will be saved for each run. This includes the raw scattering intensities for each delay scan, sorted between laser on and laser off, scattering vector q, and delay scan motor positions
 4. open the ipynb
 5. edit the parameters in the second cell, see example below
+
 ```
 proposal = 8015     # number of the proposal
 max_run = 190       # the code will try and process all scans from any numbered zero up to max_run
 overwrite = False   # set to true if you want to reanalyze previously analyzed data, otherwise set to False for faster response
 ```
+
 6. run the notebook
-8. Download the folder with the data from the EuXFEL cluster and copy it to a folder named 'input_data'.  This folder must reside in the same folder as the ipynb for the morphing `figure_of_merit_assessment.ipynb`
+7. Download the folder with the data from the EuXFEL cluster and copy it to a folder named 'input_data'. This folder must reside in the same folder as the ipynb for the morphing `figure_of_merit_assessment.ipynb`
 
 To run the code:
 
