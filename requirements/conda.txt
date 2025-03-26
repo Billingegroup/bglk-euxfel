@@ -5,3 +5,4 @@ matplotlib-base
 bg-mpl-stylesheets
 jupyter
 nbstripout
+xarray
