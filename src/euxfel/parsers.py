@@ -12,14 +12,14 @@ def define_arguments():
             "type": int,
         },
         {
-            "name": ["--sample-name"],
+            "name": ["-n", "--sample-name"],
             "help": "The name of the sample for annotating figures. The default is an"
                     "empty string.",
             "type": str,
             "default": ""
         },
         {
-            "name": ["--q-min-assess"],
+            "name": ["-m", "--q-min-assess"],
             "help": "The lower Q-bound of the range over which to do an assessment."
                     "The default is the beginning of the measured Q-range. The assessment"
                     "is carried out over a Q-range between q-min-assess and q-max-assess.",
@@ -27,7 +27,7 @@ def define_arguments():
             "default": None,
         },
         {
-            "name": ["--q-max-assess"],
+            "name": ["-x", "--q-max-assess"],
             "help": "The upper Q-bound of the range over which to do an assessment."
                     "The default is the end of the measured Q-range. The assessment"
                     "is carried out over a Q-range between q-min-assess and q-max-assess.",
@@ -83,7 +83,7 @@ def define_arguments():
                     "The default is to suppress this transformation.  Specify '--initial-stretch 0.01', or"
                     "some similar number, to turn on this transformation in the normalization step.",
             "type": float,
-            "default": 1.01,
+            "default": None,
         },
         {
             "name": ["--initial-smear"],
@@ -91,16 +91,16 @@ def define_arguments():
                     "The default is to suppress this transformation.  Specify '--initial-smear 0.005', or "
                     "some similar number, to turn on this transformation in the normalization step.",
             "type": float,
-            "default": 1.01,
+            "default": None,
         },
         {
             "name": ["--path-to-data"],
             "help": "A string representation of the relative path from your current directory to"
                     "the directory containing the data to assess. E.g., '../my/data'."
-                    "The default is './input_data' which would be a directory called 'input_data'"
-                    "located in the current directory.",
+                    "The default is '.' which would imply that the data are all in the current "
+                    "diretory.",
             "type": str,
-            "default": "./input_data",
+            "default": ".",
         }
     ]
         # # {
