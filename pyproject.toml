@@ -51,3 +51,24 @@ namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements/pip.txt"]}
 
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+ exclude = '''
+ /(
+     \.git
+ | \.hg
+ | \.mypy_cache
+ | \.tox
+ | \.venv
+ | \.rst
+ | \.txt
+ | _build
+ | buck-out
+ | build
+ | dist
+ # The following are specific to Black, you probably don't want those.
+ | blib2to3
+ | tests/data
+ )/
+ '''
