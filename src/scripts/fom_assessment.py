@@ -2,13 +2,11 @@ import diffpy.morph.morph_api as morph
 import xarray as xr
 from pathlib import Path
 import numpy as np
-import matplotlib.cm as cm
-from matplotlib.widgets import Slider, Button, RadioButtons
-import matplotlib.pyplot as plt
 import matplotlib
 
 from euxfel.functions import build_delay_dict, find_nearest
-
+from euxfel.parsers import get_args, preprocessing_args
+from euxfel.plotters import assessment_plotter
 
 matplotlib.use('TkAgg')
 
@@ -29,56 +27,19 @@ points_away_t0_plot_on_off = -6
 # rel_path_from_here_to_data = '.'
 rel_path_from_here_to_data = '../../doc/example'
 
-def plot_function(delays, time_away_t0):
-    fig, (ax0,ax1,ax2,ax3,ax4) = plt.subplots(5,1,figsize=(8, 14))
-    keys = [key for key in delays.keys()]
-    delay_times_l1 = [delay[4] for delay in delays.values()]
-    delay_times_off = [delay[5] for delay in delays.values()]
-    delay_times_on = [delay[6] for delay in delays.values()]
-    delay_times_l2 = [delay[7] for delay in delays.values()]
-    #cmap = cm.get_cmap('viridis', len(keys))
-    cmap = matplotlib.colormaps['viridis']
-    colors = [cmap(i) for i in np.linspace(0, 1, len(keys))]
-    key_to_color_idx = {key: i for i, key in enumerate(keys)}
-    #cmap = matplotlib.colormaps.get_cmap('viridis', len(keys))
-    #key_to_color_idx = {key: i for i, key in enumerate(keys)}
-    for key, delay in delays.items():
-        if key == time_away_t0:
-            on_plot = delay[1]
-            off_plot = delay[2]
-        color = colors[key_to_color_idx[key]]
-        ax0.plot(delay[0],delay[1],label=key,color=color)
-        ax2.plot(delay[0],delay[3],label=key,color=color)
-        if q_min is not None:
-            ax2.axvline(x=q_min,color='red')
-        if q_max is not None:
-            ax2.axvline(x=q_max,color='red')
-    ax1.plot(delay[0],on_plot,label='on',color='black')
-    ax1.plot(delay[0],off_plot,label='off',color='orange')
-    ax3.plot(keys,delay_times_off,marker='o', linestyle='-',label='off')
-    ax3.plot(keys,delay_times_on,marker='o', linestyle='-',label='on')
-    ax4.plot(keys,np.sqrt(delay_times_l2),marker='o', linestyle='-',label='diff')
-    ax0.set_xlabel('Q [1/A]')
-    ax0.set_ylabel('Pump On Intensity [a.u.]')
-    ax1.set_xlabel('Q [1/A]')
-    ax1.set_ylabel('Pump Off Intensity [a.u.]')
-    ax2.set_xlabel('Q [1/A]')
-    ax2.set_ylabel('On-Off Intensity [a.u.]')
-    ax3.set_xlabel('Time delay (ps)')
-    ax3.set_ylabel('Sum intensities')
-    ax4.set_xlabel('Time delay (ps)')
-    ax4.set_ylabel('RMS')
-    ax3.legend()
-    ax0.set_title(f'sample = {sample_name}, run = {run_number}, qmin = {q_min}, qmax = {q_max}')
-    ax1.set_title(f'I(q) On vs Off, time_delay ={time_away_t0}, run = {run_number}')
-    ax2.set_title(f'I(q) On - I(q) Off run = {run_number}')
-    ax4.set_title(f'Figure of Merit run = {run_number}, q_min = {q_min}, q_max = {q_max}')
-    plt.tight_layout()
-    plt.show()
-
 
 def main():
+    # args = (
+    #     gooey_parser()
+    #     if len(sys.argv) == 1 or "--gui" in sys.argv
+    #     else get_args()
+    # )
+    args = get_args()
+    metadata = preprocessing_args(args)
+    print(metadata)
+
     cwd = Path().cwd()
+    run_number = args.run_number
     rel_path_to_data = Path(rel_path_from_here_to_data)
     input_path = cwd / rel_path_to_data / 'input_data'
     str_run_number = str(run_number).zfill(4)
@@ -90,6 +51,10 @@ def main():
     on = np.load(on_data_path)
     off = np.load(off_data_path)
     q = np.load(q_path)
+    if args.q_min_assess is None:
+        args.q_min_assess = min(q)
+    if args.q_max_assess is None:
+        args.q_max_assess = max(q)
     delay = np.load(delay_positions_path)
     delay = t0-delay
     target_key = delay[target_id]
@@ -130,7 +95,7 @@ def main():
         time_away_t0 = delay[time_away_t0_index_plot]
 
     #plot_function(raw_delays)
-    plot_function(morph_delays, time_away_t0)
+    assessment_plotter(morph_delays, args)
 
 if __name__ == '__main__':
     main()
