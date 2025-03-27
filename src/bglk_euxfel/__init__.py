@@ -7,19 +7,18 @@
 # File coded by: Billinge Group members and community contributors.
 #
 # See GitHub contributions for a more detailed list of contributors.
-# https://github.com/billingegroup/bgkl_euxfel/graphs/contributors
+# https://github.com/billingegroup/bglk_euxfel/graphs/contributors
 #
 # See LICENSE.rst for license information.
 #
 ##############################################################################
-"""Definition of __version__."""
+"""Analysis scripts for assessing ultrafast pump probe powder diffraction and
+PDF measurements."""
 
-#  We do not use the other three variables, but can be added back if needed.
-#  __all__ = ["__date__", "__git_commit__", "__timestamp__", "__version__"]
+# package version
+from bglk_euxfel.version import __version__
 
-# obtain version information
-from importlib.metadata import version
-
-__version__ = version("bgkl_euxfel")
+# silence the pyflakes syntax checker
+assert __version__ or True
 
 # End of file

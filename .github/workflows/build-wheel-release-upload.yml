@@ -10,7 +10,7 @@ jobs:
   release:
     uses: Billingegroup/release-scripts/.github/workflows/_build-wheel-release-upload.yml@v0
     with:
-      project: bgkl_euxfel
+      project: bglk_euxfel
       c_extension: false
       github_admin_username: sbillinge
     secrets:

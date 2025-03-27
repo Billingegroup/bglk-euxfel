@@ -2,9 +2,9 @@
 |title|
 #######
 
-.. |title| replace:: bgkl_euxfel documentation
+.. |title| replace:: bglk_euxfel documentation
 
-bgkl_euxfel - Analysis scripts for assessing ultrafast pump probe powder diffraction and PDF measurements..
+bglk_euxfel - Analysis scripts for assessing ultrafast pump probe powder diffraction and PDF measurements..
 
 | Software version |release|.
 | Last updated |today|.
@@ -13,17 +13,17 @@ bgkl_euxfel - Analysis scripts for assessing ultrafast pump probe powder diffrac
 Authors
 =======
 
-bgkl_euxfel is developed by Billinge Group
+bglk_euxfel is developed by Billinge Group
 and its community contributors.
 
 For a detailed list of contributors see
-https://github.com/billingegroup/bgkl_euxfel/graphs/contributors.
+https://github.com/billingegroup/bglk_euxfel/graphs/contributors.
 
 ============
 Installation
 ============
 
-See the `README <https://github.com/billingegroup/bgkl_euxfel#installation>`_
+See the `README <https://github.com/billingegroup/bglk_euxfel#installation>`_
 file included with the distribution.
 
 =================
@@ -34,7 +34,7 @@ Table of contents
 
    license
    release
-   Package API <api/bgkl_euxfel>
+   Package API <api/bglk_euxfel>
 
 =======
 Indices
