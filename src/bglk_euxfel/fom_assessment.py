@@ -3,9 +3,9 @@ from pathlib import Path
 import diffpy.morph.morph_api as morph
 import matplotlib
 import numpy as np
-from euxfel.functions import build_delay_dict, find_nearest, set_limits
-from euxfel.parsers import get_args, preprocessing_args
-from euxfel.plotters import assessment_plotter
+from bglk_euxfel.functions import build_delay_dict, find_nearest, set_limits, build_paths
+from bglk_euxfel.parsers import get_args, preprocessing_args
+from bglk_euxfel.plotters import assessment_plotter
 
 matplotlib.use("TkAgg")
 
@@ -36,23 +36,12 @@ def main():
     args = get_args()
     metadata = preprocessing_args(args)
 
-    cwd = Path().cwd()
-    rel_path_to_data = Path(args.path_to_data)
-    input_path = cwd / rel_path_to_data
-    str_run_number = str(args.run_number).zfill(4)
-    on_data_path = input_path / f"run{str_run_number}_delay_intensity_on.npy"
-    off_data_path = input_path / f"run{str_run_number}_delay_intensity_off.npy"
-    q_path = input_path / f"run{str_run_number}_q_values.npy"
-    delay_positions_path = (
-        input_path / f"run{str_run_number}_delay_positions.npy"
-    )
-    metadata.update({"cwd": cwd})
-
-    on = np.load(on_data_path)
-    off = np.load(off_data_path)
-    q = np.load(q_path)
+    paths, metadata = build_paths(args, metadata)
+    on = np.load(paths.get('on_data_path'))
+    off = np.load(paths.get('off_data_path'))
+    q = np.load(paths.get('q_path'))
     args = set_limits(args, q)
-    delay = np.load(delay_positions_path)
+    delay = np.load(paths.get('delay_positions_path'))
     delay = args.t0 - delay  # remove the t0 offset
     if args.normalize_to_target_id is None:
         midpoint = (max(delay) + min(delay)) / 2.0
