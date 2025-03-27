@@ -1,4 +1,47 @@
+from pathlib import Path
+
 import numpy as np
+
+
+def build_paths(args, metadata):
+    """Return paths to all the data files for laser on and off.
+
+    Parameters
+    ----------
+    args : argparse.Namespace
+      The inputs from the command line
+    metadata : dict
+      The metadata dictionary
+
+    Returns
+    -------
+    paths : dict of pathlib.Path objects
+      The paths to all the data files for laser on and off, the q-value
+      arrays and the time-delay values. i.e keys {
+        'on_data_path':
+        'off_data_path':
+        'q_path':
+        'delay_positions_path':
+    }
+    """
+    cwd = Path().cwd()
+    rel_path_to_data = Path(args.path_to_data)
+    input_path = cwd / rel_path_to_data
+    str_run_number = str(args.run_number).zfill(4)
+    on_data_path = input_path / f"run{str_run_number}_delay_intensity_on.npy"
+    off_data_path = input_path / f"run{str_run_number}_delay_intensity_off.npy"
+    q_path = input_path / f"run{str_run_number}_q_values.npy"
+    delay_positions_path = (
+        input_path / f"run{str_run_number}_delay_positions.npy"
+    )
+    project_paths = {
+        "on_data_path": on_data_path,
+        "off_data_path": off_data_path,
+        "q_path": q_path,
+        "delay_positions_path": delay_positions_path,
+    }
+    metadata.update({"cwd": cwd})
+    return project_paths, metadata
 
 
 def build_delay_dict(
