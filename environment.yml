@@ -1,4 +1,4 @@
-name: euxfel-mar25
+name: bgkl_euxfel
 channels:
   - conda-forge
 dependencies:
