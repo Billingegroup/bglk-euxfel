@@ -3,38 +3,38 @@ requires = ["setuptools>=62.0", "setuptools-git-versioning>=2.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "euxfel-mar25"
+name = "bgkl_euxfel"
 dynamic=['version', 'dependencies']
 authors = [
-  { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
+  { name="Simon J. L. Billinge", email="sb2896@columbia.edu" },
 ]
 maintainers = [
-  { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
+  { name="Simon J. L. Billinge", email="sb2896@columbia.edu" },
 ]
-description = "Data from XFEL expt 2025"
-keywords = ["text data parsers", "wx grid", "diffraction objects"]
+description = "Analysis scripts for assessing ultrafast pump probe powder diffraction and PDF measurements."
+keywords = ['diffraction', 'PDF', 'x-ray', 'ultrafast', 'pump probe']
 readme = "README.rst"
 requires-python = ">=3.11, <3.14"
 classifiers = [
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 3 - Alpha',
         'Environment :: Console',
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
-        'License :: Free To Use But Restricted',
+        'License :: OSI Approved :: BSD License',
         'Operating System :: MacOS :: MacOS X',
         'Operating System :: Microsoft :: Windows',
         'Operating System :: POSIX',
         'Operating System :: Unix',
         'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: 3.12',
-	'Programming Language :: Python :: 3.13',
+        'Programming Language :: Python :: 3.13',
         'Topic :: Scientific/Engineering :: Physics',
         'Topic :: Scientific/Engineering :: Chemistry',
 ]
 
 [project.urls]
-Homepage = "https://github.com/diffpy/diffpy.utils/"
-Issues = "https://github.com/diffpy/diffpy.utils/issues/"
+Homepage = "https://github.com/billingegroup/bgkl_euxfel/"
+Issues = "https://github.com/billingegroup/bgkl_euxfel/issues/"
 
 [tool.setuptools-git-versioning]
 enabled = true
@@ -51,24 +51,30 @@ namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements/pip.txt"]}
 
+[tool.codespell]
+exclude-file = ".codespell/ignore_lines.txt"
+ignore-words = ".codespell/ignore_words.txt"
+skip = "*.cif,*.dat"
+
 [tool.black]
 line-length = 79
 include = '\.pyi?$'
- exclude = '''
- /(
-     \.git
- | \.hg
- | \.mypy_cache
- | \.tox
- | \.venv
- | \.rst
- | \.txt
- | _build
- | buck-out
- | build
- | dist
- # The following are specific to Black, you probably don't want those.
- | blib2to3
- | tests/data
- )/
- '''
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | \.rst
+  | \.txt
+  | _build
+  | buck-out
+  | build
+  | dist
+
+  # The following are specific to Black, you probably don't want those.
+  | blib2to3
+  | tests/data
+)/
+'''
