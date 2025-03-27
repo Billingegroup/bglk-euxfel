@@ -1,4 +1,4 @@
-name: bgkl_euxfel
+name: bglk_euxfel
 channels:
   - conda-forge
 dependencies:

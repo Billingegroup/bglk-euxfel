@@ -7,7 +7,7 @@
 # File coded by: Billinge Group members and community contributors.
 #
 # See GitHub contributions for a more detailed list of contributors.
-# https://github.com/billingegroup/bgkl_euxfel/graphs/contributors
+# https://github.com/billingegroup/bglk_euxfel/graphs/contributors
 #
 # See LICENSE.rst for license information.
 #
@@ -16,7 +16,7 @@
 PDF measurements."""
 
 # package version
-from bgkl_euxfel.version import __version__
+from bglk_euxfel.version import __version__
 
 # silence the pyflakes syntax checker
 assert __version__ or True

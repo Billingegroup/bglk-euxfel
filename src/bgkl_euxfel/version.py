@@ -7,7 +7,7 @@
 # File coded by: Billinge Group members and community contributors.
 #
 # See GitHub contributions for a more detailed list of contributors.
-# https://github.com/billingegroup/bgkl_euxfel/graphs/contributors
+# https://github.com/billingegroup/bglk_euxfel/graphs/contributors
 #
 # See LICENSE.rst for license information.
 #
@@ -20,6 +20,6 @@
 # obtain version information
 from importlib.metadata import version
 
-__version__ = version("bgkl_euxfel")
+__version__ = version("bglk_euxfel")
 
 # End of file

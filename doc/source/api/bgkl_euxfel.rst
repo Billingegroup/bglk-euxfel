@@ -3,9 +3,9 @@
 |title|
 =======
 
-.. |title| replace:: bgkl_euxfel package
+.. |title| replace:: bglk_euxfel package
 
-.. automodule:: bgkl_euxfel
+.. automodule:: bglk_euxfel
     :members:
     :undoc-members:
     :show-inheritance:
@@ -14,7 +14,7 @@ Subpackages
 -----------
 
 .. toctree::
-   bgkl_euxfel.example_package
+   bglk_euxfel.example_package
 
 Submodules
 ----------
@@ -22,9 +22,9 @@ Submodules
 |module|
 --------
 
-.. |module| replace:: bgkl_euxfel.example_submodule module
+.. |module| replace:: bglk_euxfel.example_submodule module
 
-.. automodule:: bgkl_euxfel.example_submodule
+.. automodule:: bglk_euxfel.example_submodule
     :members:
     :undoc-members:
     :show-inheritance:

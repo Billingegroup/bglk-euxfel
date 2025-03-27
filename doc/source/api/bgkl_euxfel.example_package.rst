@@ -3,9 +3,9 @@
 |title|
 =======
 
-.. |title| replace:: bgkl_euxfel.example_package package
+.. |title| replace:: bglk_euxfel.example_package package
 
-.. automodule:: bgkl_euxfel.example_package
+.. automodule:: bglk_euxfel.example_package
     :members:
     :undoc-members:
     :show-inheritance:
@@ -13,9 +13,9 @@
 |foo|
 -----
 
-.. |foo| replace:: bgkl_euxfel.example_package.foo module
+.. |foo| replace:: bglk_euxfel.example_package.foo module
 
-.. automodule::  bgkl_euxfel.example_package.foo
+.. automodule::  bglk_euxfel.example_package.foo
     :members:
     :undoc-members:
     :show-inheritance:
@@ -23,9 +23,9 @@
 |bar|
 -----
 
-.. |bar| replace:: bgkl_euxfel.example_package.bar module
+.. |bar| replace:: bglk_euxfel.example_package.bar module
 
-.. automodule:: bgkl_euxfel.example_package.foo
+.. automodule:: bglk_euxfel.example_package.foo
     :members:
     :undoc-members:
     :show-inheritance:

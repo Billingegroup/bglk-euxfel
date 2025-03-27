@@ -7,4 +7,4 @@ Contributors
 ------------
 
 For a list of contributors, visit
-https://github.com/billingegroup/bgkl_euxfel/graphs/contributors
+https://github.com/billingegroup/bglk_euxfel/graphs/contributors
