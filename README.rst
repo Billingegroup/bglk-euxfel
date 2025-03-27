@@ -37,9 +37,17 @@
 
 Analysis scripts for assessing ultrafast pump probe powder diffraction and PDF measurements.
 
-* LONGER DESCRIPTION HERE
+Code for assessing figures of merit from ultrafast pump-probed data from the EuXFEL.  This was first written
+for the experiment in March 2025
 
-For more information about the bgkl_euxfel library, please consult our `online documentation <https://billingegroup.github.io/bgkl_euxfel>`_.
+We are working on a cli but there are also Jupyter scripts in `src/bgkl_euxfel/scripts`
+Functions are in `src/bgkl_euxfel/functions.py` and plotters in `src/bgkl_euxfel/plotters.py`
+
+to use the CLI please use the installation instructions below.
+
+To use the Jupyter notebooks, please use the instructions in the `Getting Started` section
+
+For more information about the `bgkl_euxfel` library, please consult our `online documentation <https://billingegroup.github.io/bgkl_euxfel>`_.
 
 Citation
 --------
