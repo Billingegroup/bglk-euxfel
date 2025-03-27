@@ -1,19 +1,18 @@
 import matplotlib
-import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.widgets import Button, RadioButtons, Slider
+
+# from matplotlib.widgets import Button, RadioButtons, Slider
 
 
 def assessment_plotter(delays, args):
     fig, (ax0, ax1, ax2, ax3) = plt.subplots(4, 1, figsize=(8, 14))
     keys = [key for key in delays.keys()]
-    delay_times_l1 = [delay[4] for delay in delays.values()]
+    # delay_times_l1 = [delay[4] for delay in delays.values()]
     delay_times_off = [delay[5] for delay in delays.values()]
     delay_times_on = [delay[6] for delay in delays.values()]
     delay_times_l2 = [delay[7] for delay in delays.values()]
-    delay_times_rw = [delay[9] for delay in delays.values()]
-    # cmap = cm.get_cmap('viridis', len(keys))
+    # delay_times_rw = [delay[9] for delay in delays.values()]
     cmap = matplotlib.colormaps["viridis"]
     colors = [cmap(i) for i in np.linspace(0, 1, len(keys))]
     key_to_color_idx = {key: i for i, key in enumerate(keys)}
@@ -38,7 +37,8 @@ def assessment_plotter(delays, args):
     ax3.plot(
         keys, np.sqrt(delay_times_l2), marker="o", linestyle="-", label="diff"
     )
-    # ax3.plot(keys,np.sqrt(delay_times_rw),marker='o', linestyle='-',label='diff')
+    # ax3.plot(keys,np.sqrt(delay_times_rw),marker='o',
+    #    linestyle='-',label='diff')
     ax0.set_xlabel("Q [1/A]")
     ax0.set_ylabel("Pump On Intensity [a.u.]")
     ax1.set_xlabel("Q [1/A]")
@@ -52,10 +52,13 @@ def assessment_plotter(delays, args):
     # ax4.set_ylabel('RMS')
     ax3.legend()
     ax0.set_title(
-        f"sample = {args.sample_name}, run = {args.run_number}, qmin = {args.q_min_assess:.2f}, qmax = {args.q_max_assess:.2f}"
+        f"sample = {args.sample_name}, run = {args.run_number}, "
+        f"qmin = {args.q_min_assess:.2f}, qmax = {args.q_max_assess:.2f}"
     )
-    # ax1.set_title(f'I(q) On vs Off, time_delay ={args.time_away_t0}, run = {args.run_number}')
+    # ax1.set_title(f'I(q) On vs Off, time_delay ={args.time_away_t0},
+    # run = {args.run_number}')
     ax2.set_title(f"I(q) On - I(q) Off run = {args.run_number}")
-    # ax4.set_title(f'Figure of Merit run = {args.run_number}, q_min = {args.q_min_assess:.2f}, q_max = {args.q_max_assess:.2f}')
+    # ax4.set_title(f'Figure of Merit run = {args.run_number},
+    # q_min = {args.q_min_assess:.2f}, q_max = {args.q_max_assess:.2f}')
     plt.tight_layout()
     plt.show()

@@ -3,7 +3,6 @@ from pathlib import Path
 import diffpy.morph.morph_api as morph
 import matplotlib
 import numpy as np
-import xarray as xr
 
 from euxfel.functions import build_delay_dict, find_nearest, set_limits
 from euxfel.parsers import get_args, preprocessing_args
@@ -39,7 +38,6 @@ def main():
     metadata = preprocessing_args(args)
 
     cwd = Path().cwd()
-    run_number = args.run_number
     rel_path_to_data = Path(args.path_to_data)
     input_path = cwd / rel_path_to_data
     str_run_number = str(args.run_number).zfill(4)
