@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 ##############################################################################
 #
-# (c) 2024 The Trustees of Columbia University in the City of New York.
+# (c) 2025 The Trustees of Columbia University in the City of New York.
 # All rights reserved.
 #
 # File coded by: Billinge Group members and community contributors.
 #
 # See GitHub contributions for a more detailed list of contributors.
-# https://github.com/diffpy/diffpy.labpdfproc/graphs/contributors
+# https://github.com/billingegroup/bgkl_euxfel/graphs/contributors
 #
 # See LICENSE.rst for license information.
 #
@@ -20,4 +20,6 @@
 # obtain version information
 from importlib.metadata import version
 
-__version__ = version("euxfel")
+__version__ = version("bgkl_euxfel")
+
+# End of file
