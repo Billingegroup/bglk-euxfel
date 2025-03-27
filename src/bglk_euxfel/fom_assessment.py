@@ -3,7 +3,13 @@ from pathlib import Path
 import diffpy.morph.morph_api as morph
 import matplotlib
 import numpy as np
-from bglk_euxfel.functions import build_delay_dict, find_nearest, set_limits, build_paths
+
+from bglk_euxfel.functions import (
+    build_delay_dict,
+    build_paths,
+    find_nearest,
+    set_limits,
+)
 from bglk_euxfel.parsers import get_args, preprocessing_args
 from bglk_euxfel.plotters import assessment_plotter
 
@@ -37,11 +43,11 @@ def main():
     metadata = preprocessing_args(args)
 
     paths, metadata = build_paths(args, metadata)
-    on = np.load(paths.get('on_data_path'))
-    off = np.load(paths.get('off_data_path'))
-    q = np.load(paths.get('q_path'))
+    on = np.load(paths.get("on_data_path"))
+    off = np.load(paths.get("off_data_path"))
+    q = np.load(paths.get("q_path"))
     args = set_limits(args, q)
-    delay = np.load(paths.get('delay_positions_path'))
+    delay = np.load(paths.get("delay_positions_path"))
     delay = args.t0 - delay  # remove the t0 offset
     if args.normalize_to_target_id is None:
         midpoint = (max(delay) + min(delay)) / 2.0

@@ -1,5 +1,7 @@
-import numpy as np
 from pathlib import Path
+
+import numpy as np
+
 
 def build_paths(args, metadata):
     cwd = Path().cwd()
@@ -10,13 +12,13 @@ def build_paths(args, metadata):
     off_data_path = input_path / f"run{str_run_number}_delay_intensity_off.npy"
     q_path = input_path / f"run{str_run_number}_q_values.npy"
     delay_positions_path = (
-            input_path / f"run{str_run_number}_delay_positions.npy"
+        input_path / f"run{str_run_number}_delay_positions.npy"
     )
     project_paths = {
-        'on_data_path': on_data_path,
-        'off_data_path': off_data_path,
-        'q_path': q_path,
-        'delay_positions_path': delay_positions_path,
+        "on_data_path": on_data_path,
+        "off_data_path": off_data_path,
+        "q_path": q_path,
+        "delay_positions_path": delay_positions_path,
     }
     metadata.update({"cwd": cwd})
     return project_paths, metadata
