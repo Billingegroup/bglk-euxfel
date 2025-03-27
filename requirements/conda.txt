@@ -1,8 +1,0 @@
-numpy
-scipy
-diffpy.utils
-matplotlib-base
-bg-mpl-stylesheets
-jupyter
-nbstripout
-xarray
