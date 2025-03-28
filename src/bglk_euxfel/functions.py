@@ -97,46 +97,62 @@ def set_limits(args, q):
 
 
 def modulate_q(q, a3, a2, a1, a0):
-    return a3*q**3 + a2*q**2 + a1*q + a0
+    return a3 * q**3 + a2 * q**2 + a1 * q + a0
 
 
-def intensity_residuals(params, q_xfel, q_synchrotron, fq_synchrotron, iq_xfel):
+def intensity_residuals(
+    params, q_xfel, q_synchrotron, fq_synchrotron, iq_xfel
+):
     a3, a2, a1, a0 = params
     q_corrected = modulate_q(q_xfel, a3, a2, a1, a0)
     fq_interp = np.interp(q_corrected, q_synchrotron, fq_synchrotron)
     iq_norm = iq_xfel / np.max(iq_xfel)
-    fq_norm = fq_interp / (np.max(fq_interp)*q_corrected)
+    fq_norm = fq_interp / (np.max(fq_interp) * q_corrected)
     return np.sum((iq_norm - fq_norm) ** 2)
+
 
 def optimize_q(q_xfel, q_synchrotron, fq_synchrotron, iq_xfel, bounds):
     result = differential_evolution(
         intensity_residuals,
         bounds,
-        args=(q_xfel, q_synchrotron, fq_synchrotron, iq_xfel)
+        args=(q_xfel, q_synchrotron, fq_synchrotron, iq_xfel),
     )
     return result.x
 
 
-def perform_polynomial_fit(q_corrected, iq_xfel, q_synchrotron, fq_synchrotron,
-                           q_min_range, q_max_range, degree_a, degree_b):
+def perform_polynomial_fit(
+    q_corrected,
+    iq_xfel,
+    q_synchrotron,
+    fq_synchrotron,
+    q_min_range,
+    q_max_range,
+    degree_a,
+    degree_b,
+):
     qmin_idx = np.abs(q_corrected - q_min_range).argmin()
     qmax_idx = np.abs(q_corrected - q_max_range).argmin()
     q_fit = q_corrected[qmin_idx:qmax_idx]
     iq_fit = iq_xfel[qmin_idx:qmax_idx]
     fq_interp = np.interp(q_fit, q_synchrotron, fq_synchrotron)
-    X_a = np.vstack([iq_fit * (q_fit ** i) for i in range(degree_a + 1)]).T
-    X_b = np.vstack([q_fit ** i for i in range(degree_b + 1)]).T
+    X_a = np.vstack([iq_fit * (q_fit**i) for i in range(degree_a + 1)]).T
+    X_b = np.vstack([q_fit**i for i in range(degree_b + 1)]).T
     X = np.hstack([X_a, X_b])
     coeffs, residuals, rank, s = np.linalg.lstsq(X, fq_interp, rcond=None)
-    a_coeffs = coeffs[:degree_a + 1]
-    b_coeffs = coeffs[degree_a + 1:]
+    a_coeffs = coeffs[: degree_a + 1]
+    b_coeffs = coeffs[degree_a + 1 :]
 
     def a_poly(q_val):
-        return sum(a_coeffs[i] * (q_val ** i) for i in range(degree_a + 1))
+        return sum(a_coeffs[i] * (q_val**i) for i in range(degree_a + 1))
 
     def b_poly(q_val):
-        return sum(b_coeffs[i] * (q_val ** i) for i in range(degree_b + 1))
+        return sum(b_coeffs[i] * (q_val**i) for i in range(degree_b + 1))
 
-    fitted_fq = np.array([a_poly(q_val) * I_val + b_poly(q_val) for q_val, I_val in zip(q_fit, iq_fit)])
+    fitted_fq = np.array(
+        [
+            a_poly(q_val) * I_val + b_poly(q_val)
+            for q_val, I_val in zip(q_fit, iq_fit)
+        ]
+    )
 
     return q_fit, fitted_fq, a_coeffs, b_coeffs
